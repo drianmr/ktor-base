@@ -1,13 +1,22 @@
 [versions]
 kotlin = "2.1.10"
 kotlinx-datetime = "0.6.2"
+kotlinx-serialization = "1.8.0"
+kotlinx-serialization-plugin = "2.1.0"
 dokka = "2.0.0"
+ktor = "3.1.1"
 exposed = "0.60.0"
 postgresql = "42.7.5"
 maven-publish = "0.31.0-rc2"
 
 [libraries]
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
+ktor-bom = { module = "io.ktor:ktor-bom", version.ref = "ktor" }
+ktor-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json-jvm" }
+
+ktor-server-auth = { module = "io.ktor:ktor-server-auth-jvm" }
 
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
 exposed-crypt = { module = "org.jetbrains.exposed:exposed-crypt", version.ref = "exposed" }
@@ -19,9 +28,12 @@ exposed-money = { module = "org.jetbrains.exposed:exposed-money", version.ref = 
 
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 
+drianmr-field-validator = { module = "io.github.drianmr:field-validator-kt", version = "1.0.0" }
+
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinx-serialization-plugin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
