@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "com.drianmr"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -42,6 +42,7 @@ subprojects {
     val pomArtifactId = sub.property("POM_ARTIFACT_ID").toString()
     val pomName = sub.property("POM_NAME").toString()
     val pomDescription = sub.property("POM_DESCRIPTION").toString()
+    val pomInception = sub.property("POM_INCEPTION").toString()
     val pomVersion = sub.property("POM_VERSION").toString()
 
     mavenPublishing {
@@ -49,7 +50,7 @@ subprojects {
             KotlinJvm(
                 // configures the -javadoc artifact, possible values:
                 // - `JavadocJar.None()` don't publish this artifact
-                // - `JavadocJar.Empty()` publish an emprt jar
+                // - `JavadocJar.Empty()` publish an empty jar
                 // - `JavadocJar.Dokka("dokkaHtml")` when using Kotlin with Dokka, where `dokkaHtml` is the name of the Dokka task that should be used as input
                 javadocJar = JavadocJar.Dokka("dokkaHtml"),
                 // whether to publish a sources jar
@@ -63,35 +64,12 @@ subprojects {
         publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
 
         signAllPublications()
-
-        val propertiesString = sub.ext.properties
-            .toSortedMap()
-            .map { (k, v) -> "$k=$v" }
-            .joinToString(
-                prefix = "\n\t├ ",
-                separator = ",\n\t├ ",
-                // postfix = "\n\t└ ",
-            )
-        println(
-            """Configuring
-            |├ group=${sub.group}
-            |├ name=${sub.name}
-            |├ version=${sub.version}
-            |└ POM
-            |  ├ GROUP=$pomGroup
-            |  ├ ARTIFACT_ID=$pomArtifactId
-            |  ├ NAME=$pomName
-            |  ├ DESCRIPTION=$pomDescription
-            |  └ VERSION=$pomVersion
-            |└ extensions=$propertiesString
-        """.trimMargin()
-        )
-        coordinates(sub.group.toString(), sub.name, sub.version.toString())
+        coordinates(pomGroup, pomArtifactId, pomVersion)
 
         pom {
-            name.set(sub.ext.properties["pomName"].toString())
-            description.set(sub.ext.properties["pomDescription"].toString())
-            inceptionYear.set("2025")
+            name.set(pomName)
+            description.set(pomDescription)
+            inceptionYear.set(pomInception)
             url.set("https://github.com/drianmr/ktor-base/")
 
             licenses {
