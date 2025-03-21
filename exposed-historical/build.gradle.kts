@@ -1,8 +1,8 @@
-group = "com.drianmr.exposed.ext"
+group = "com.drianmr.exposed.historical"
 version = "1.0.0-SNAPSHOT"
 
 dependencies {
-    implementation(libs.kotlinx.datetime)
+    implementation(projects.postgreExt)
 
     implementation(libs.exposed.core)
     implementation(libs.exposed.crypt)
@@ -11,8 +11,6 @@ dependencies {
     implementation(libs.exposed.kotlin.datetime)
     implementation(libs.exposed.json)
     implementation(libs.exposed.money)
-
-    implementation(libs.postgresql)
 
     testImplementation(libs.kotlin.test)
 }

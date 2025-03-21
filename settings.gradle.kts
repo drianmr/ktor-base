@@ -4,5 +4,8 @@ plugins {
 
 rootProject.name = "ktor-base"
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 include(":exposed-ext")
+include(":exposed-historical")
 include(":postgre-ext")
