@@ -1,6 +1,14 @@
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinJvm
 import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+val compilerArgs = listOf(
+    "-opt-in=kotlin.contracts.ExperimentalContracts",
+    "-Xcontext-receivers",
+    // See https://github.com/Kotlin/KEEP/issues/367#issuecomment-2248947337
+    "-Xsuppress-warning=CONTEXT_RECEIVERS_DEPRECATED",
+)
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
@@ -92,5 +100,17 @@ subprojects {
                 developerConnection.set("scm:git:ssh://git@github.com/drianmr/ktor-base.git")
             }
         }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
+
+    tasks.withType<KotlinCompile> {
+        compilerOptions.freeCompilerArgs.addAll(compilerArgs)
     }
 }
