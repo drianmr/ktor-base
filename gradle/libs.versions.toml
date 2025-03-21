@@ -1,8 +1,15 @@
 [versions]
 kotlin = "2.1.10"
+dokka = "2.0.0"
+postgresql = "42.7.5"
+maven-publish = "0.31.0-rc2"
 
 [libraries]
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
