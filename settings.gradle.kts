@@ -4,4 +4,5 @@ plugins {
 
 rootProject.name = "ktor-base"
 
+include(":exposed-ext")
 include(":postgre-ext")
