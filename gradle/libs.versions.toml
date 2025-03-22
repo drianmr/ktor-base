@@ -3,8 +3,10 @@ kotlin = "2.1.10"
 kotlinx-datetime = "0.6.2"
 kotlinx-serialization = "1.8.0"
 kotlinx-serialization-plugin = "2.1.0"
+ksp = "2.1.10-1.0.30"
 dokka = "2.0.0"
 ktor = "3.1.1"
+dagger = "2.55"
 exposed = "0.60.0"
 postgresql = "42.7.5"
 maven-publish = "0.31.0-rc2"
@@ -17,6 +19,9 @@ ktor-bom = { module = "io.ktor:ktor-bom", version.ref = "ktor" }
 ktor-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json-jvm" }
 
 ktor-server-auth = { module = "io.ktor:ktor-server-auth-jvm" }
+
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
 exposed-crypt = { module = "org.jetbrains.exposed:exposed-crypt", version.ref = "exposed" }
@@ -35,5 +40,6 @@ kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotl
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinx-serialization-plugin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }

@@ -6,7 +6,8 @@ rootProject.name = "ktor-base"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-include(":ktor-core-api")
+include(":dagger-ext")
 include(":exposed-ext")
 include(":exposed-historical")
+include(":ktor-core-api")
 include(":postgre-ext")
