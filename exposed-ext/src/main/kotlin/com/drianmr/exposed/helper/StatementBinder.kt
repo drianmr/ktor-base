@@ -3,6 +3,7 @@ package com.drianmr.exposed.helper
 import com.drianmr.exposed.ext.fillParameters
 import org.jetbrains.exposed.sql.IColumnType
 import org.jetbrains.exposed.sql.IntegerColumnType
+import org.jetbrains.exposed.sql.VarCharColumnType
 
 /**
  * A utility class for binding parameter values to a prepared statement in a type-safe manner.
@@ -24,6 +25,13 @@ class StatementBinder {
      */
     fun bind(value: Int) {
         args.add(IntegerColumnType() to value)
+    }
+
+    /**
+     * Binds a [String] value to the prepared statement.
+     */
+    fun bind(value: String, length: Int = value.length) {
+        args.add(VarCharColumnType(length) to value)
     }
 
     /**
