@@ -30,7 +30,7 @@ class StatementBinder {
     /**
      * Binds a [String] value to the prepared statement.
      */
-    fun bind(value: String, length: Int = value.length) {
+    fun bind(value: String?, length: Int = value?.length ?: 0) {
         args.add(VarCharColumnType(length) to value)
     }
 
