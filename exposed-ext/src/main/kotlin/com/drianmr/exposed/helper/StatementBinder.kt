@@ -3,7 +3,9 @@ package com.drianmr.exposed.helper
 import com.drianmr.exposed.ext.fillParameters
 import org.jetbrains.exposed.sql.IColumnType
 import org.jetbrains.exposed.sql.IntegerColumnType
+import org.jetbrains.exposed.sql.UUIDColumnType
 import org.jetbrains.exposed.sql.VarCharColumnType
+import java.util.UUID
 
 /**
  * A utility class for binding parameter values to a prepared statement in a type-safe manner.
@@ -32,6 +34,13 @@ class StatementBinder {
      */
     fun bind(value: String?, length: Int = value?.length ?: 0) {
         args.add(VarCharColumnType(length) to value)
+    }
+
+    /**
+     * Binds a [UUID] value to the prepared statement.
+     */
+    fun bind(value: UUID?) {
+        args.add(UUIDColumnType() to value)
     }
 
     /**
