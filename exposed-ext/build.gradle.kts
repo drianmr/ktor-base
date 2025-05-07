@@ -1,5 +1,5 @@
 group = "com.drianmr.exposed.ext"
-version = "1.0.2-SNAPSHOT"
+version = "1.0.3-SNAPSHOT"
 
 dependencies {
     implementation(libs.kotlinx.datetime)
