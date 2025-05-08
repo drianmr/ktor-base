@@ -37,3 +37,14 @@ inline fun <reified E : Enum<E>> ResultSet.getEnum(columnLabel: String): E {
     val raw = getString(columnLabel)
     return enumValueOf(raw)
 }
+
+/**
+ * Retrieves an enum constant of type [E] from the current row of this [ResultSet] using the specified column label,
+ * or `null` if the value does not match any enum constant.
+ */
+inline fun <reified E : Enum<E>> ResultSet.getEnumOrNull(columnLabel: String): E? = try {
+    val raw = getString(columnLabel)
+    enumValueOf<E>(raw)
+} catch (_: Exception) {
+    null
+}
