@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.kotlinx.serialization)
 }
 
+group = "com.drianmr.ktor.core.api"
+version = "1.0.1-SNAPSHOT"
+
 dependencies {
     implementation(libs.kotlinx.datetime)
     implementation(libs.kotlinx.serialization.json)

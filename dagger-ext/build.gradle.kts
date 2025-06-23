@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.drianmr.dagger.ext"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.1-SNAPSHOT"
 
 dependencies {
     implementation(libs.dagger)

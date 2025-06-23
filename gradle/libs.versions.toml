@@ -1,16 +1,17 @@
 [versions]
-kotlin = "2.1.10"
-kotlinx-coroutines = "1.10.1"
+kotlin = "2.1.21"
+kotlinx-coroutines = "1.10.2"
 kotlinx-datetime = "0.6.2"
-kotlinx-serialization = "1.8.0"
+kotlinx-serialization = "1.8.1"
 kotlinx-serialization-plugin = "2.1.0"
-ksp = "2.1.10-1.0.30"
+ksp = "2.1.21-2.0.2"
 dokka = "2.0.0"
-ktor = "3.1.1"
-dagger = "2.55"
+ktor = "3.2.0"
+dagger = "2.56.2"
 exposed = "0.60.0"
-postgresql = "42.7.5"
-maven-publish = "0.31.0-rc2"
+postgresql = "42.7.7"
+maven-publish = "0.33.0"
+gradle-versions = "0.52.0"
 
 [libraries]
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
@@ -45,3 +46,4 @@ kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", vers
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
+gradle-versions = { id = "com.github.ben-manes.versions", version.ref = "gradle-versions" }
