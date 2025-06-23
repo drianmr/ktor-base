@@ -14,6 +14,7 @@ plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.dokka)
     alias(libs.plugins.maven.publish)
+    alias(libs.plugins.gradle.versions)
 }
 
 group = "com.drianmr"
