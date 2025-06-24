@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.drianmr.ktor.core.api"
-version = "1.0.1-SNAPSHOT"
+version = "1.0.2-SNAPSHOT"
 
 dependencies {
     implementation(libs.kotlinx.datetime)
