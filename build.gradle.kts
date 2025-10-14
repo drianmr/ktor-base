@@ -1,6 +1,5 @@
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinJvm
-import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val compilerArgs = listOf(
@@ -11,6 +10,7 @@ val compilerArgs = listOf(
 )
 
 plugins {
+    signing
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.dokka)
     alias(libs.plugins.maven.publish)
@@ -70,7 +70,8 @@ subprojects {
         // or when publishing to https://s01.oss.sonatype.org
         // publishToMavenCentral(SonatypeHost.S01)
         // or when publishing to https://central.sonatype.com/
-        publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+        // publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+        publishToMavenCentral()
 
         signAllPublications()
         coordinates(pomGroup, pomArtifactId, pomVersion)
@@ -100,6 +101,21 @@ subprojects {
                 connection.set("scm:git:git://github.com/drianmr/ktor-base.git")
                 developerConnection.set("scm:git:ssh://git@github.com/drianmr/ktor-base.git")
             }
+        }
+    }
+
+    signing {
+        val signingKey = System.getenv("SIGNING_KEY")
+            ?: project.findProperty("signing.key") as String?
+        val signingPassword = System.getenv("SIGNING_PASSWORD")
+            ?: project.findProperty("signing.password") as String?
+
+        if (!signingKey.isNullOrBlank() && !signingPassword.isNullOrBlank()) {
+            useInMemoryPgpKeys(signingKey, signingPassword)
+            sign(publishing.publications["maven"])
+            logger.lifecycle("✅ GPG signing enabled for module ${sub.name}")
+        } else {
+            logger.lifecycle("⚠️ No GPG credentials found — skipping signing for module ${sub.name}")
         }
     }
 
