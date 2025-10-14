@@ -10,11 +10,13 @@ ktor = "3.2.0"
 dagger = "2.56.2"
 exposed = "0.60.0"
 postgresql = "42.7.7"
+lettuce = "6.8.1.RELEASE"
 maven-publish = "0.33.0"
 gradle-versions = "0.52.0"
 
 [libraries]
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-reactive = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactive", version.ref = "kotlinx-coroutines" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
@@ -35,6 +37,8 @@ exposed-json = { module = "org.jetbrains.exposed:exposed-json", version.ref = "e
 exposed-money = { module = "org.jetbrains.exposed:exposed-money", version.ref = "exposed" }
 
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+
+lettuce-core = { module = "io.lettuce:lettuce-core", version.ref = "lettuce" }
 
 drianmr-field-validator = { module = "io.github.drianmr:field-validator-kt", version = "1.0.0" }
 
