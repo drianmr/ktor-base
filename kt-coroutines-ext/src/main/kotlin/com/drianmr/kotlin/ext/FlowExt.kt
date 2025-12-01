@@ -30,9 +30,9 @@ inline fun <T, R> Flow<T>.concurrentMapIndexed(
  * @param transform A suspend lambda function that applies a transformation to each element.
  */
 suspend inline fun <T, R> Flow<T>.concurrentOrderedMap(
-    crossinline transform: suspend (Int, T) -> R,
+    crossinline transform: suspend (T) -> R,
 ): List<R> = this
-    .concurrentMapIndexed { index, value -> index to transform(index, value) }
+    .concurrentMapIndexed { index, value -> index to transform(value) }
     .toList()
     .sortedBy { (index, _) -> index }
     .map { (_, result) -> result }
@@ -48,9 +48,9 @@ suspend inline fun <T, R> Flow<T>.concurrentOrderedMap(
  */
 suspend inline fun <T, R> Flow<T>.concurrentOrderedMap(
     flowOn: CoroutineContext,
-    crossinline transform: suspend (Int, T) -> R,
+    crossinline transform: suspend (T) -> R,
 ): List<R> = this
-    .concurrentMapIndexed { index, value -> index to transform(index, value) }
+    .concurrentMapIndexed { index, value -> index to transform(value) }
     .flowOn(flowOn)
     .toList()
     .sortedBy { (index, _) -> index }
